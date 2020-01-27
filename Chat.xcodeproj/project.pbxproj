@@ -13,6 +13,10 @@
 		73A7FE9823D8E49A00CEAD9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A7FE9623D8E49A00CEAD9F /* Main.storyboard */; };
 		73A7FE9A23D8E49B00CEAD9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A7FE9923D8E49B00CEAD9F /* Assets.xcassets */; };
 		73A7FE9D23D8E49B00CEAD9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A7FE9B23D8E49B00CEAD9F /* LaunchScreen.storyboard */; };
+		73B4716623D9F96600AA227B /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B4716523D9F96600AA227B /* MyCell.swift */; };
+		73B4716823D9FBB600AA227B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B4716723D9FBB600AA227B /* Global.swift */; };
+		73B4716A23DA05BE00AA227B /* ChatsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B4716923DA05BE00AA227B /* ChatsTable.swift */; };
+		73B4716C23DA062A00AA227B /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B4716B23DA062A00AA227B /* ChatListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,11 @@
 		73A7FE9923D8E49B00CEAD9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73A7FE9C23D8E49B00CEAD9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73A7FE9E23D8E49B00CEAD9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73B4716423D9F50300AA227B /* Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat.entitlements; sourceTree = "<group>"; };
+		73B4716523D9F96600AA227B /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		73B4716723D9FBB600AA227B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		73B4716923DA05BE00AA227B /* ChatsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTable.swift; sourceTree = "<group>"; };
+		73B4716B23DA062A00AA227B /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +65,7 @@
 		73A7FE8F23D8E49A00CEAD9F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				73B4716423D9F50300AA227B /* Chat.entitlements */,
 				73A7FE9023D8E49A00CEAD9F /* AppDelegate.swift */,
 				73A7FE9223D8E49A00CEAD9F /* SceneDelegate.swift */,
 				73A7FE9423D8E49A00CEAD9F /* ViewController.swift */,
@@ -63,6 +73,10 @@
 				73A7FE9923D8E49B00CEAD9F /* Assets.xcassets */,
 				73A7FE9B23D8E49B00CEAD9F /* LaunchScreen.storyboard */,
 				73A7FE9E23D8E49B00CEAD9F /* Info.plist */,
+				73B4716523D9F96600AA227B /* MyCell.swift */,
+				73B4716723D9FBB600AA227B /* Global.swift */,
+				73B4716B23DA062A00AA227B /* ChatListCell.swift */,
+				73B4716923DA05BE00AA227B /* ChatsTable.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -139,7 +153,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A7FE9523D8E49A00CEAD9F /* ViewController.swift in Sources */,
+				73B4716623D9F96600AA227B /* MyCell.swift in Sources */,
 				73A7FE9123D8E49A00CEAD9F /* AppDelegate.swift in Sources */,
+				73B4716C23DA062A00AA227B /* ChatListCell.swift in Sources */,
+				73B4716823D9FBB600AA227B /* Global.swift in Sources */,
+				73B4716A23DA05BE00AA227B /* ChatsTable.swift in Sources */,
 				73A7FE9323D8E49A00CEAD9F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +234,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -284,7 +302,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Chat/Chat.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7DTLRHN6WR;
 				INFOPLIST_FILE = Chat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -293,6 +313,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = estech.Chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Chat Francisco";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -302,7 +323,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = Chat/Chat.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7DTLRHN6WR;
 				INFOPLIST_FILE = Chat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -311,6 +334,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = estech.Chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Chat Francisco";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

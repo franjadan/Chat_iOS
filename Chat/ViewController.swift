@@ -8,13 +8,79 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var messageText: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        navigationItem.hidesBackButton = true 
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let index = Array(AppData.messages.keys).firstIndex(of: AppData.activeChat)!
+        return Array(AppData.messages)[index].value.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyCell
+        
+        let index = Array(AppData.messages.keys).firstIndex(of: AppData.activeChat)!
+        cell.messageLabel.text = "\(Array(AppData.messages)[index].value[indexPath.row].0): \(Array(AppData.messages)[index].value[indexPath.row].1)"
+        
+        return cell
     }
 
+    @IBAction func sendMessageAction(_ sender: Any) {
+        if !messageText.text!.isEmpty {
+            let urlString = "https://qastusoft.es/test/estech/\(AppData.activeChat)/index.php?token=\(AppData.contacts[AppData.activeChat]!)&title=Fran&body=\(messageText.text!.replacingOccurrences(of: " ", with: "%20"))"
+            
+            guard let url = URL(string: urlString) else { return }
 
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print(error!.localizedDescription)
+                }
+                
+                
+                
+                DispatchQueue.main.async {
+                    AppData.messages[AppData.activeChat]!.append(("Fran",self.messageText.text!))
+                    self.tableView.reloadData()
+                    self.messageText.text = ""
+                }
+                
+                /*
+
+                guard let data = data else { return }
+
+                do {
+
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+                    
+                    print(json)
+                    
+                    
+                } catch let jsonError {
+                    print(jsonError)
+                }
+                 */
+
+            }.resume()
+        }
+    }
 }
 
