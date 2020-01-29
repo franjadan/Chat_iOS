@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.registerForPushNotifications()
         UNUserNotificationCenter.current().delegate = self
         UIApplication.shared.applicationIconBadgeNumber = 0
+
         // Override point for customization after application launch.
         return true
     }
@@ -28,13 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             switch response.actionIdentifier {
                 case "SLEEP_ACTION":
                     AppData.activeChat = aps["alert"]!["title"] as! String
-                AppData.messages[AppData.activeChat]?.append((AppData.activeChat,aps["alert"]!["body"] as! String))
                     sendMessage(message: "Ahora no puedo hablar")
                     break
                 default:
                     AppData.activeChat = aps["alert"]!["title"] as! String
-                AppData.messages[AppData.activeChat]?.append((AppData.activeChat,aps["alert"]!["body"] as! String))
-                    
                     let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                     
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -104,8 +102,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
-
 
     //Si la aplicación se está ejecutando
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping(UIBackgroundFetchResult) -> Void) {
@@ -114,6 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
+    
         
         /*
          
@@ -130,26 +127,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
  
         */
         
-        /*
-        print("Hola")
-        
         DispatchQueue.main.async {
-            print(AppData.activeChat)
-            print(aps["alert"]!["title"] as! String)
+            AppData.messages[aps["alert"]!["title"] as! String]?.append((aps["alert"]!["title"] as! String,aps["alert"]!["body"] as! String))
             
             if AppData.activeChat == aps["alert"]!["title"] as! String {
-                AppData.messages[AppData.activeChat]?.append((AppData.activeChat,aps["alert"]!["body"] as! String))
-                
                 let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                 
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let page = mainStoryboard.instantiateViewController(withIdentifier: "messages") as! ViewController
                 let rootViewController = window!.rootViewController as! UINavigationController
                 rootViewController.pushViewController(page, animated: true)
-            } else {
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.0, repeats: false)
+            } /*else {
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
                 let content = UNMutableNotificationContent()
-                content.title = aps["alert"]?["title"] as! String
+                content.title = "Hola"
                 content.subtitle = ""
                 content.body = aps["alert"]?["body"] as! String
                 content.sound = .default
@@ -160,14 +151,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     print("¡ERROR!")
                     }
                 }
-            }
+            }*/
         }
-        */
+        
     }
                 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
         
+        if AppData.activeChat != notification.request.content.title {
+            completionHandler([.alert, .sound])
+        }
+        
+        /*
         print("ok")
         
         DispatchQueue.main.async {
@@ -184,6 +179,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 AppData.messages[notification.request.content.title]!.append((notification.request.content.title,notification.request.content.body))
             }
         }
+ */
     }
     
     func sendMessage(message: String){
