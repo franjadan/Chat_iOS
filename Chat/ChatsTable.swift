@@ -11,7 +11,25 @@ import UIKit
 class ChatTable: UITableViewController {
     
     override func viewDidLoad() {
-        navigationItem.hidesBackButton = true 
+        navigationItem.hidesBackButton = true
+        
+        for chats in AppData.messages {
+            let chatName = chats.key
+            
+            if UserDefaults.standard.array(forKey: "Names_\(chatName)") != nil && UserDefaults.standard.array(forKey: "Messages_\(chatName)") != nil {
+                
+                let names = UserDefaults.standard.array(forKey: "Names_\(chatName)") as! [String]
+                let messages = UserDefaults.standard.array(forKey: "Messages_\(chatName)") as! [String]
+                
+                var chatMessages: [(String, String)] = []
+                
+                for index in 0..<names.count {
+                    chatMessages.append((names[index], messages[index]))
+                }
+                
+                AppData.messages[chatName] = chatMessages
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +61,31 @@ class ChatTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         AppData.activeChat = Array(AppData.contacts.keys) [indexPath.row]
         performSegue(withIdentifier: "segue", sender: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+         let delete = UIContextualAction(style: .destructive, title: "Limpiar") { (_, _, boolValue) in
+                boolValue(true)
+                
+                let alert = UIAlertController(title: "Confirmación", message: "¿Estás seguro de borrar todos los mensajes?", preferredStyle: .alert)
+
+                let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+
+                let deleteAction = UIAlertAction(title: "Limpiar", style: .destructive) { _ in
+                    AppData.messages[Array(AppData.contacts.keys)[indexPath.row]] = []
+                    UserDefaults.standard.removeObject(forKey: "Names_\(Array(AppData.contacts.keys)[indexPath.row])")
+                    UserDefaults.standard.removeObject(forKey: "Messages_\(Array(AppData.contacts.keys)[indexPath.row])")
+                }
+
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+
+                self.present(alert, animated: true, completion: nil)
+            }
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [delete])
+        swipeActions.performsFirstActionWithFullSwipe = false
+        return swipeActions
     }
     
 }

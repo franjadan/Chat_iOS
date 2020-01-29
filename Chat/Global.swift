@@ -30,7 +30,7 @@ struct AppData {
     static var activeChat: String = ""
     
     static var messages: [String: [(String, String)]] = [
-        "Raul": [("Raul", "hola")],
-        "Fran": [("Fran", "hola")]
+        "Raul": [],
+        "Fran": []
     ];
 }

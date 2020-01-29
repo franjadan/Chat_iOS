@@ -31,10 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             switch response.actionIdentifier {
                 case "SLEEP_ACTION":
                     AppData.activeChat = title
+                    loadMessages(title: title)
                     sendMessage(message: "Ahora no puedo hablar")
                     break
                 default:
+                    loadMessages(title: title)
                     AppData.activeChat = title
+                    saveMessages(title: title)
                     let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                     
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -112,12 +115,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        
         let title = aps["alert"]!["title"] as! String
         let body = aps["alert"]!["body"] as! String
         
         DispatchQueue.main.async {
+            
+            self.loadMessages(title: title)
             AppData.messages[title]?.append((title, body))
+            self.saveMessages(title: title)
             
             if AppData.activeChat == title {
                 let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
@@ -154,16 +159,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     }
                     
                     DispatchQueue.main.async {
-                        AppData.messages[title]?.append((title, message))
+                        AppData.messages[title]?.append(("Fran", message))
+                        self.saveMessages(title: title)
                         
-                        /*
                         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                         
                         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let page = mainStoryboard.instantiateViewController(withIdentifier: "messages") as! ViewController
                         let rootViewController = window!.rootViewController as! UINavigationController
                         rootViewController.pushViewController(page, animated: true)
-                        */
+                        
                     }
                     
                     /*
@@ -184,6 +189,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
                 }.resume()
             }
+        }
+        
+        func loadMessages(title: String){
+            if UserDefaults.standard.array(forKey: "Names_\(title)") != nil && UserDefaults.standard.array(forKey: "Messages_\(title)") != nil {
+                let names = UserDefaults.standard.array(forKey: "Names_\(title)") as! [String]
+                let messages = UserDefaults.standard.array(forKey: "Messages_\(title)") as! [String]
+                var chatMessages: [(String, String)] = []
+                    
+                for index in 0..<names.count {
+                    chatMessages.append((names[index], messages[index]))
+                }
+                    
+                AppData.messages[title] = chatMessages
+            }
+        }
+        
+        func saveMessages(title: String){
+            var names:[String] = []
+            var messages:[String] = []
+            
+            for tuple in AppData.messages[title]!{
+                names.append(tuple.0)
+                messages.append(tuple.1)
+            }
+            
+            UserDefaults.standard.set(names, forKey: "Names_\(title)")
+            UserDefaults.standard.set(messages, forKey: "Messages_\(title)")
         }
     }
 

@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         navigationItem.hidesBackButton = true 
         self.hideKeyboardWhenTappedAround()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,6 +60,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 DispatchQueue.main.async {
                     AppData.messages[title]!.append(("Fran",self.messageText.text!))
+                   
+                    var names:[String] = []
+                    var messages:[String] = []
+                    
+                    for tuple in AppData.messages[title]!{
+                        names.append(tuple.0)
+                        messages.append(tuple.1)
+                    }
+                    
+                    UserDefaults.standard.set(names, forKey: "Names_\(title)")
+                    UserDefaults.standard.set(messages, forKey: "Messages_\(title)")
+                    
                     self.tableView.reloadData()
                     self.messageText.text = ""
                 }
