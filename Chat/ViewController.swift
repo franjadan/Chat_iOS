@@ -45,8 +45,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     @IBAction func sendMessageAction(_ sender: Any) {
+        let title = AppData.activeChat
+        
         if !messageText.text!.isEmpty {
-            let urlString = "https://qastusoft.es/test/estech/\(AppData.activeChat)/index.php?token=\(AppData.contacts[AppData.activeChat]!)&title=Fran&body=\(messageText.text!.replacingOccurrences(of: " ", with: "%20"))"
+            let urlString = "https://qastusoft.es/test/estech/\(title)/index.php?token=\(AppData.contacts[title]!)&title=Fran&body=\(messageText.text!.replacingOccurrences(of: " ", with: "%20"))"
             
             guard let url = URL(string: urlString) else { return }
 
@@ -55,10 +57,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     print(error!.localizedDescription)
                 }
                 
-                
-                
                 DispatchQueue.main.async {
-                    AppData.messages[AppData.activeChat]!.append(("Fran",self.messageText.text!))
+                    AppData.messages[title]!.append(("Fran",self.messageText.text!))
                     self.tableView.reloadData()
                     self.messageText.text = ""
                 }

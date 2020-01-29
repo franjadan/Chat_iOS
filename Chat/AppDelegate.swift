@@ -26,13 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if let aps = userInfo["aps"] as? [String: AnyObject] {
             
+            let title = aps["alert"]!["title"] as! String
+            
             switch response.actionIdentifier {
                 case "SLEEP_ACTION":
-                    AppData.activeChat = aps["alert"]!["title"] as! String
+                    AppData.activeChat = title
                     sendMessage(message: "Ahora no puedo hablar")
                     break
                 default:
-                    AppData.activeChat = aps["alert"]!["title"] as! String
+                    AppData.activeChat = title
                     let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                     
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -110,48 +112,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-    
         
-        /*
-         
-        completionHandler(.noData)
-        
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        
-        let alert = UIAlertController(title: aps["alert"]!["title"] as! String, message: aps["alert"]!["body"] as! String, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let title = aps["alert"]!["title"] as! String
+        let body = aps["alert"]!["body"] as! String
         
         DispatchQueue.main.async {
-            window?.rootViewController?.present(alert, animated: true, completion: nil)
-        }
- 
-        */
-        
-        DispatchQueue.main.async {
-            AppData.messages[aps["alert"]!["title"] as! String]?.append((aps["alert"]!["title"] as! String,aps["alert"]!["body"] as! String))
+            AppData.messages[title]?.append((title, body))
             
-            if AppData.activeChat == aps["alert"]!["title"] as! String {
+            if AppData.activeChat == title {
                 let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-                
+        
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let page = mainStoryboard.instantiateViewController(withIdentifier: "messages") as! ViewController
                 let rootViewController = window!.rootViewController as! UINavigationController
                 rootViewController.pushViewController(page, animated: true)
-            } /*else {
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-                let content = UNMutableNotificationContent()
-                content.title = "Hola"
-                content.subtitle = ""
-                content.body = aps["alert"]?["body"] as! String
-                content.sound = .default
-                let request = UNNotificationRequest(identifier: "NOTIFICACION", content: content, trigger: trigger)
-                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-                UNUserNotificationCenter.current().add(request){ error in
-                if let _ = error{
-                    print("¡ERROR!")
-                    }
-                }
-            }*/
+            }
         }
         
     }
@@ -161,30 +136,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if AppData.activeChat != notification.request.content.title {
             completionHandler([.alert, .sound])
         }
-        
-        /*
-        print("ok")
-        
-        DispatchQueue.main.async {
-            
-            if AppData.activeChat == notification.request.content.title {
-                AppData.messages[AppData.activeChat]?.append((notification.request.content.title,notification.request.content.body))
-                let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-                               
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let page = mainStoryboard.instantiateViewController(withIdentifier: "messages") as! ViewController
-                let rootViewController = window!.rootViewController as! UINavigationController
-                rootViewController.pushViewController(page, animated: true)
-            } else {
-                AppData.messages[notification.request.content.title]!.append((notification.request.content.title,notification.request.content.body))
-            }
-        }
- */
     }
     
     func sendMessage(message: String){
+        
+        let title = AppData.activeChat
+        
         if !message.isEmpty {
-            let urlString = "https://qastusoft.es/test/estech/\(AppData.activeChat)/index.php?token=\(AppData.contacts[AppData.activeChat]!)&title=Fran&body=\(message.replacingOccurrences(of: " ", with: "%20"))"
+            let urlString = "https://qastusoft.es/test/estech/\(title)/index.php?token=\(AppData.contacts[title]!)&title=Fran&body=\(message.replacingOccurrences(of: " ", with: "%20"))"
             print(urlString)
                 
                 guard let url = URL(string: urlString) else { return }
@@ -195,14 +154,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     }
                     
                     DispatchQueue.main.async {
-                        AppData.messages[AppData.activeChat]?.append((AppData.activeChat, message))
+                        AppData.messages[title]?.append((title, message))
                         
+                        /*
                         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                         
                         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let page = mainStoryboard.instantiateViewController(withIdentifier: "messages") as! ViewController
                         let rootViewController = window!.rootViewController as! UINavigationController
                         rootViewController.pushViewController(page, animated: true)
+                        */
                     }
                     
                     /*
