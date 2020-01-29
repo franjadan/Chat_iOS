@@ -55,7 +55,7 @@ class ChatTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(integerLiteral: 50)
+        return CGFloat(integerLiteral: 70)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

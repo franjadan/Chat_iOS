@@ -24,13 +24,23 @@ extension UIViewController {
 struct AppData {
     static let contacts: [String: String] = [
         "Raul": "f81a5415e5cbbf525b2163039ca6edc711f20c08eb7a48deb93350d932b11195",
-        "Fran": "e3480807cafcf6eb6286adf22054d26a708add7f832c8d95745892b60d217a17"
+        "Fran": "e3480807cafcf6eb6286adf22054d26a708add7f832c8d95745892b60d217a17",
+        "Jesus": "",
+        "Vero": "",
+        "Juan": "",
+        "Marcos": "",
+        "Luis": ""
     ];
     
     static var activeChat: String = ""
     
     static var messages: [String: [(String, String)]] = [
         "Raul": [],
-        "Fran": []
+        "Fran": [],
+        "Jesus": [],
+        "Vero": [],
+        "Juan": [],
+        "Marcos": [],
+        "Luis": []
     ];
 }

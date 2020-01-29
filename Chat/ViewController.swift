@@ -40,7 +40,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyCell
         
         let index = Array(AppData.messages.keys).firstIndex(of: AppData.activeChat)!
-        cell.messageLabel.text = "\(Array(AppData.messages)[index].value[indexPath.row].0): \(Array(AppData.messages)[index].value[indexPath.row].1)"
+        cell.messageLabel.text = "\(Array(AppData.messages)[index].value[indexPath.row].1)"
+        
+        if Array(AppData.messages)[index].value[indexPath.row].0 == "Fran" {
+            cell.messageLabel.textAlignment = .right
+        } else {
+            cell.messageLabel.textAlignment = .left
+        }
+        
         
         return cell
     }

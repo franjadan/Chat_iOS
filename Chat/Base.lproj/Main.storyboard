@@ -23,20 +23,25 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="mcA-HQ-FXo" customClass="MyCell" customModule="Chat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mcA-HQ-FXo" id="67h-0k-G78">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-iJ-RBj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-iJ-RBj">
                                                     <rect key="frame" x="20" y="11" width="374" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AOJ-iJ-RBj" secondAttribute="bottom" id="e0G-ST-INX"/>
+                                                <constraint firstItem="AOJ-iJ-RBj" firstAttribute="top" secondItem="67h-0k-G78" secondAttribute="topMargin" id="mQM-HM-6PI"/>
+                                                <constraint firstItem="AOJ-iJ-RBj" firstAttribute="leading" secondItem="67h-0k-G78" secondAttribute="leadingMargin" id="wym-bR-iEx"/>
+                                                <constraint firstItem="AOJ-iJ-RBj" firstAttribute="trailing" secondItem="67h-0k-G78" secondAttribute="trailingMargin" id="xDr-3h-CMX"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="AOJ-iJ-RBj" id="MY1-47-dP8"/>
@@ -125,21 +130,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatListCell" id="R2e-dz-sm3" customClass="ChatListCell" customModule="Chat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatListCell" rowHeight="87" id="R2e-dz-sm3" customClass="ChatListCell" customModule="Chat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="87"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R2e-dz-sm3" id="M7z-xF-OkV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4D-9z-ZAD">
-                                            <rect key="frame" x="20" y="11" width="374" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4D-9z-ZAD">
+                                            <rect key="frame" x="118" y="33" width="276" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="qhL-uW-BYE">
+                                            <rect key="frame" x="7" y="18.5" width="96" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="qhL-uW-BYE" secondAttribute="height" multiplier="48:25" id="X5v-pe-k1p"/>
+                                                <constraint firstAttribute="height" constant="50" id="nps-a8-l0k"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="m4D-9z-ZAD" firstAttribute="leading" secondItem="qhL-uW-BYE" secondAttribute="trailing" constant="15" id="8DY-OL-tSx"/>
+                                        <constraint firstItem="qhL-uW-BYE" firstAttribute="centerY" secondItem="M7z-xF-OkV" secondAttribute="centerY" id="YNL-3W-Pdx"/>
+                                        <constraint firstItem="m4D-9z-ZAD" firstAttribute="centerY" secondItem="qhL-uW-BYE" secondAttribute="centerY" id="Zco-bY-Yrf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="m4D-9z-ZAD" secondAttribute="trailing" id="gbc-Ug-EiN"/>
+                                        <constraint firstItem="qhL-uW-BYE" firstAttribute="leading" secondItem="M7z-xF-OkV" secondAttribute="leading" constant="7" id="y1I-6Z-y52"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="chatLabel" destination="m4D-9z-ZAD" id="8fr-jo-Dpz"/>
@@ -161,6 +179,9 @@
             <point key="canvasLocation" x="1069.5652173913045" y="-536.38392857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon" width="746.5" height="746.5"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iZz-XG-kCK"/>
     </inferredMetricsTieBreakers>
