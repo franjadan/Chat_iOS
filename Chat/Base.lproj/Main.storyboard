@@ -19,19 +19,18 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="702"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="150" id="mcA-HQ-FXo" customClass="MyCell" customModule="Chat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="68" id="mcA-HQ-FXo" customClass="MyCell" customModule="Chat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mcA-HQ-FXo" id="67h-0k-G78">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-iJ-RBj" customClass="PaddingLabel" customModule="Chat" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="60" width="52" height="30.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOJ-iJ-RBj" customClass="PaddingLabel" customModule="Chat" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="11" width="62" height="46"/>
                                                     <color key="backgroundColor" red="0.58384931252024352" green="0.7693973183631897" blue="0.46939808223094648" alpha="0.66813380281690138" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="4CR-V7-suN"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="4LR-FW-iWp"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="160" id="b8e-cF-QGH"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -39,28 +38,27 @@
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="6"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="czS-ZI-nfw" customClass="PaddingLabel" customModule="Chat" customModuleProvider="target">
-                                                    <rect key="frame" x="342" y="60" width="52" height="30.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czS-ZI-nfw" customClass="PaddingLabel" customModule="Chat" customModuleProvider="target">
+                                                    <rect key="frame" x="332" y="11" width="62" height="46"/>
                                                     <color key="backgroundColor" red="0.19531503224872768" green="0.7693973183631897" blue="0.61337293840761253" alpha="0.66813380281690138" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="Ch8-hu-Fam"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="hTL-92-YWK"/>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="160" id="iJa-8b-UPt"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -68,16 +66,16 @@
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="topInset">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="6"/>
@@ -88,7 +86,11 @@
                                             <constraints>
                                                 <constraint firstItem="AOJ-iJ-RBj" firstAttribute="centerY" secondItem="67h-0k-G78" secondAttribute="centerY" id="0P4-BK-Dkj"/>
                                                 <constraint firstItem="AOJ-iJ-RBj" firstAttribute="leading" secondItem="67h-0k-G78" secondAttribute="leadingMargin" id="7HW-VS-JW2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AOJ-iJ-RBj" secondAttribute="bottom" id="MHi-V9-kBr"/>
+                                                <constraint firstItem="AOJ-iJ-RBj" firstAttribute="top" secondItem="67h-0k-G78" secondAttribute="topMargin" id="Pf0-px-c3T"/>
+                                                <constraint firstItem="czS-ZI-nfw" firstAttribute="top" secondItem="67h-0k-G78" secondAttribute="topMargin" id="R9B-7Z-rBA"/>
                                                 <constraint firstItem="czS-ZI-nfw" firstAttribute="trailing" secondItem="67h-0k-G78" secondAttribute="trailingMargin" id="Zfl-uQ-dEg"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="czS-ZI-nfw" secondAttribute="bottom" id="mVd-2P-l4C"/>
                                                 <constraint firstItem="czS-ZI-nfw" firstAttribute="centerY" secondItem="67h-0k-G78" secondAttribute="centerY" id="ufg-hf-G3H"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -251,7 +253,6 @@
         <image name="icon" width="746.5" height="746.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tr0-9F-o6g"/>
         <segue reference="iZz-XG-kCK"/>
     </inferredMetricsTieBreakers>
 </document>

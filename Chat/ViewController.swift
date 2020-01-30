@@ -18,11 +18,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         navigationItem.hidesBackButton = true 
         self.hideKeyboardWhenTappedAround()
         self.tableView.separatorStyle = .none
+        
+        self.tableView.estimatedRowHeight = 68.0
+        self.tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func viewDidAppear(_ animated: Bool) {
         registerForKeyboardNotifications()
         self.navigationItem.title = AppData.activeChat
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -102,9 +106,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.layer.mask = maskLayer
     }
     
+    /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
+ */
     
 
     @IBAction func sendMessageAction(_ sender: Any) {
