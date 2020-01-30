@@ -12,6 +12,7 @@ class ChatTable: UITableViewController {
     
     override func viewDidLoad() {
         navigationItem.hidesBackButton = true
+        self.tableView.separatorStyle = .none
         
         for chats in AppData.messages {
             let chatName = chats.key
@@ -48,8 +49,15 @@ class ChatTable: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatListCell", for: indexPath) as! ChatListCell
         
+        let chatName = Array(AppData.contacts.keys) [indexPath.row]
 
-        cell.chatLabel.text = Array(AppData.contacts.keys) [indexPath.row]
+        cell.chatLabel.text = chatName
+        
+        if AppData.messages[chatName]!.count > 0 {
+            cell.firstMessageLabel.text = AppData.messages[chatName]!.last?.1
+        } else {
+            cell.firstMessageLabel.text = ""
+        }
         
         return cell
     }
@@ -75,6 +83,10 @@ class ChatTable: UITableViewController {
                     AppData.messages[Array(AppData.contacts.keys)[indexPath.row]] = []
                     UserDefaults.standard.removeObject(forKey: "Names_\(Array(AppData.contacts.keys)[indexPath.row])")
                     UserDefaults.standard.removeObject(forKey: "Messages_\(Array(AppData.contacts.keys)[indexPath.row])")
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
 
                 alert.addAction(cancelAction)

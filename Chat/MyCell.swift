@@ -11,5 +11,6 @@ import UIKit
 class MyCell: UITableViewCell {
     
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var myMessageLabel: UILabel!
     
 }

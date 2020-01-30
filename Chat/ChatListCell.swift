@@ -11,5 +11,6 @@ import UIKit
 class ChatListCell: UITableViewCell {
     
     @IBOutlet weak var chatLabel: UILabel!
+    @IBOutlet weak var firstMessageLabel: UILabel!
     
 }
