@@ -115,6 +115,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
+        completionHandler(.newData)
+        
         let title = aps["alert"]!["title"] as! String
         let body = aps["alert"]!["body"] as! String
         
